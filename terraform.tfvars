@@ -1,0 +1,12 @@
+vpc_cidr              = "10.0.0.0/16"
+subnet_az             = "ap-south-1a"
+subnet_cidr_block     = "10.0.1.0/24"
+edit_routes_dest_cidr = "0.0.0.0/0"
+sg_name               = "dev-sg"
+desc                  = "dev - security group"
+environment           = "qa"
+ami_id = "ami-053b12d3152c0cc71"
+instance_type = "t2.micro"
+instance_names = ["web-server", "app-server", "db-server"]  
+user_names = ["ashok", "alekya", "prudhvi"]   
+s3_bucket_names = ["ashok-aws-s3-bucket001", "prudhvi-aws-s3-bucket002", "alekya-aws-s3-bucket003"]
