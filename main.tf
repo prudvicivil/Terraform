@@ -132,16 +132,16 @@ resource "aws_instance" "my_ec2" {
 
 #Example - Count
 
-#resource "aws_instance" "server_count" {
-#  count = length(var.instance_names)  
-#  ami = var.ami_id
-#  instance_type = var.instance_type
-#  subnet_id = aws_subnet.my_subnet.id
-#
-#  tags = {
-#    Name = var.instance_names[count.index]  
-#  }
-#}
+resource "aws_instance" "server_count" {
+  count = length(var.instance_names)  
+  ami = var.ami_id
+  instance_type = var.instance_type
+  subnet_id = aws_subnet.my_subnet.id
+
+  tags = {
+    Name = var.instance_names[count.index]  
+  }
+}
 
 resource "aws_iam_user" "my_iam_users" {
   count = length(var.user_names)
@@ -158,16 +158,16 @@ resource "aws_s3_bucket" "my_s3_buckets" {
 
 # convert the list to set if we use for_each
 
-#resource "aws_instance" "my_ec2_instances" {
-#  for_each = toset(var.aws_ec2_instances)
-#  ami = var.ami_id
-#  instance_type = var.instance_type
-#3  subnet_id = aws_subnet.my_subnet.id
-#  
-#  tags = {
-#    Name = "${each.value}-ec2-server"
-#  }  
-#}
+resource "aws_instance" "my_ec2_instances" {
+  for_each = toset(var.aws_ec2_instances)
+  ami = var.ami_id
+  instance_type = var.instance_type
+  subnet_id = aws_subnet.my_subnet.id
+  
+  tags = {
+    Name = "${each.value}-ec2-server"
+  }  
+}
 
 #terraform provisioner 
 #file provisioner , local-exec, remote-exec 
